@@ -9,7 +9,8 @@ export default class AddWidget extends React.Component {
       name: '',
       price: '',
       mfg: '',
-      inStock: ''
+      inStock: '',
+      rating: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.addWidget = this.addWidget.bind(this)
@@ -44,6 +45,10 @@ export default class AddWidget extends React.Component {
           <p><input placeholder='In stock' name='inStock'
             onChange={this.handleChange}
             value={this.state.inStock}
+          /></p>
+          <p><input placeholder='Rating' name='rating'
+            onChange={this.handleChange}
+            value={this.state.rating}
           /></p>
           <button type='button' onClick={this.addWidget}>Add widget</button>
           {' '}

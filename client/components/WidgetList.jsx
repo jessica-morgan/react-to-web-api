@@ -12,7 +12,6 @@ export default function WidgetList (props) {
           widget={widget}
           hideDetails={props.hideDetails}
           showDetails={props.showDetails} />
-    
       })}
     </div>
   )

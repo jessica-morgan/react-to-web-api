@@ -5,6 +5,7 @@ exports.up = (knex, Promise) => {
         table.integer('price')
         table.string('mfg')
         table.integer('inStock')
+        table.string('rating')
       })
     }
 
