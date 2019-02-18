@@ -18,3 +18,21 @@ export function appendWidget (widget, callback) {
       callback(err)
     })
 }
+
+export function deleteWidget (widget, callback) {
+  request
+  .delete(widgetUrl)
+  .send(widget)
+  .end((err, res) => {
+    callback(err)
+  })
+}
+
+export function updateWidget (widget, callback) {
+  request
+  .put(widgetUrl)
+  .send(widget)
+  .end((err, res) => {
+    callback(err)
+  })
+}
