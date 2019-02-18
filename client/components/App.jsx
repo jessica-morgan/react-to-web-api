@@ -79,6 +79,8 @@ export default class App extends React.Component {
           <a id='show-widget-link' href='#'
             onClick={this.showAddWidget}>Add widget</a>
         </p>
+        
+      <a href='#' onClick={this.refreshList}>Refresh</a>
 
         {this.state.addWidgetVisible && <AddWidget
           finishAdd={this.refreshList} />}

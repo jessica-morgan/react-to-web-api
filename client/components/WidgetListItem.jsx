@@ -5,6 +5,7 @@ export default function WidgetListItem ({widget, showDetails}) {
     <div className='widget-list-item'>
       {`${widget.name} `}
       <a href='#' onClick={() => showDetails(widget)}>details</a>
+      
     </div>
   )
 }

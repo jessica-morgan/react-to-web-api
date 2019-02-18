@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function WidgetDetails (props) {
-  const {widget, isVisible, hideDetails} = props
+  const {widget, isVisible, hideDetails, refreshList} = props
   const classes = 'widget-details ' + (isVisible ? 'visible' : 'hidden')
 
   return (
@@ -12,6 +12,7 @@ export default function WidgetDetails (props) {
       <p>Mfg: {widget.mfg}</p>
       <p>In stock: {widget.inStock}</p>
       <a href='#' onClick={hideDetails}>Close</a>
+    
     </div>
   )
 }
