@@ -24,8 +24,8 @@ router.delete('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-  db.updateWidget(req.qbody)
-  .then(res.sendStatus(204))
+  db.updateWidget(req.body)
+  .then(res.redirect('/'))
 })
 
 module.exports = router

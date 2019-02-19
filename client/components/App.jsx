@@ -4,8 +4,10 @@ import AddWidget from './AddWidget'
 import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
+import UpdateWidget from './UpdateWidget'
 
-import {getWidgets, deleteWidget} from '../api'
+import {getWidgets, deleteWidget, updateWidget} from '../api'
+
 
 export default class App extends React.Component {
   constructor (props) {
@@ -16,7 +18,8 @@ export default class App extends React.Component {
       widgets: [],
       activeWidget: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      addWidgetVisible: false,
+      updateWidgetFormVisible: false
     }
 
     this.refreshList = this.refreshList.bind(this)
@@ -25,6 +28,7 @@ export default class App extends React.Component {
     this.renderWidgets = this.renderWidgets.bind(this)
     this.showAddWidget = this.showAddWidget.bind(this)
     this.deleteWidgetDetails = this.deleteWidgetDetails.bind(this)
+    this.showUpdateForm = this.showUpdateForm.bind(this)
   }
 
   componentDidMount () {
@@ -73,6 +77,28 @@ export default class App extends React.Component {
     deleteWidget(widget, this.refreshList)
   }
 
+  updateWidgetDetails (widget) {
+    this.setState({
+      activeWidget: widget,
+      detailsVisible: true
+    })
+    updateWidget(widget, this.refreshList)
+  }
+
+  showUpdateForm (widget) {
+    this.setState({
+      activeWidget: widget,
+      updateWidgetFormVisible: true,
+      detailsVisible: false
+  })
+}
+
+hideUpdateForm () {
+  this.setState({
+    updateWidgetFormVisible: false
+  })
+}
+
   render () {
     return (
       <div>
@@ -99,7 +125,17 @@ export default class App extends React.Component {
           hideDetails={this.hideDetails}
           widget={this.state.activeWidget}
           deleteWidgetDetails={this.deleteWidgetDetails}
+          showUpdateForm={this.showUpdateForm}
            />}
+
+           {this.state.updateWidgetFormVisible && <UpdateWidget
+            widget={this.state.activeWidget}
+            showDetails={this.showDetails}
+            hideDetails={this.hideDetails}
+            hideUpdateForm={this.hideUpdateForm}
+            updateWidgetDetails={this.updateWidgetDetails}
+            finishAdd={this.refreshList}
+            />}
       </div>
     )
   }

@@ -33,5 +33,11 @@ function deleteWidget (widget, db = connection) {
 function updateWidget(widget, db = connection) {
  return db('widgets')
  .where('widgets.id', widget.id)
- .update(widget)
+ .update({
+  name: widget.name,
+  price: widget.price,
+  mfg: widget.mfg,
+  inStock: widget.inStock,
+  rating: widget.rating
+  })
 }
