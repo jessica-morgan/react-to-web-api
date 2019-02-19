@@ -78,14 +78,6 @@ export default class App extends React.Component {
     deleteWidget(widget, this.refreshList)
   }
 
-  updateWidgetDetails (widget) {
-    this.setState({
-      activeWidget: widget,
-      detailsVisible: true
-    })
-    updateWidget(widget, this.refreshList)
-  }
-
   showUpdateForm (widget) {
     this.setState({
       activeWidget: widget,
@@ -135,7 +127,6 @@ hideUpdateForm () {
             showDetails={this.showDetails}
             hideDetails={this.hideDetails}
             hideUpdateForm={this.hideUpdateForm}
-            updateWidgetDetails={this.updateWidgetDetails}
             finishAdd={this.refreshList}
             />}
       </div>
