@@ -29,6 +29,7 @@ export default class App extends React.Component {
     this.showAddWidget = this.showAddWidget.bind(this)
     this.deleteWidgetDetails = this.deleteWidgetDetails.bind(this)
     this.showUpdateForm = this.showUpdateForm.bind(this)
+    this.hideUpdateForm = this.hideUpdateForm.bind(this)
   }
 
   componentDidMount () {
@@ -95,7 +96,8 @@ export default class App extends React.Component {
 
 hideUpdateForm () {
   this.setState({
-    updateWidgetFormVisible: false
+    updateWidgetFormVisible: false,
+    detailsVisible: false
   })
 }
 

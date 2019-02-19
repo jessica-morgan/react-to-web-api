@@ -27,7 +27,7 @@ export default class UpdateWidget extends React.Component {
   updateDetails (e) {
       //update widget comes from api
       //finishAdd, showDetails comes from props in App
-    updateWidget(this.state, this.props.finishAdd(), this.props.hideDetails())
+    updateWidget(this.state, this.props.finishAdd(), this.props.hideDetails(), this.props.hideUpdateForm())
   }
 
   render () {
