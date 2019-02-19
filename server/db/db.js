@@ -24,14 +24,14 @@ function saveWidget(widget, db = connection) {
   })
 }
 
-function deleteWidget(widget, db = connection) {
+function deleteWidget (widget, db = connection) {
   return db('widgets')
-  .where(id, widget.id)
-  .delete()
+    .where('widgets.id', widget.id)
+    .delete()
 }
 
 function updateWidget(widget, db = connection) {
  return db('widgets')
- .where(id, widget.id)
+ .where('widgets.id', widget.id)
  .update(widget)
 }

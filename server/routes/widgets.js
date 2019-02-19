@@ -19,12 +19,12 @@ router.post('/', (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  db.deleteWidget()
-  .then(res.sendStatus(202))
+  db.deleteWidget(req.body)
+  .then(res.redirect('/'))
 })
 
 router.put('/', (req, res) => {
-  db.updateWidget()
+  db.updateWidget(req.qbody)
   .then(res.sendStatus(204))
 })
 

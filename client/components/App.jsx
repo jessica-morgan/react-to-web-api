@@ -5,7 +5,7 @@ import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
 
-import {getWidgets} from '../api'
+import {getWidgets, deleteWidget} from '../api'
 
 export default class App extends React.Component {
   constructor (props) {
@@ -24,6 +24,7 @@ export default class App extends React.Component {
     this.hideDetails = this.hideDetails.bind(this)
     this.renderWidgets = this.renderWidgets.bind(this)
     this.showAddWidget = this.showAddWidget.bind(this)
+    this.deleteWidgetDetails = this.deleteWidgetDetails.bind(this)
   }
 
   componentDidMount () {
@@ -64,6 +65,14 @@ export default class App extends React.Component {
     })
   }
 
+  deleteWidgetDetails (widget) {
+    this.setState({
+      activeWidget: null,
+      detailsVisible: false
+    })
+    deleteWidget(widget, this.refreshList)
+  }
+
   render () {
     return (
       <div>
@@ -88,7 +97,9 @@ export default class App extends React.Component {
         {this.state.detailsVisible && <WidgetDetails
           isVisible={this.state.detailsVisible}
           hideDetails={this.hideDetails}
-          widget={this.state.activeWidget} />}
+          widget={this.state.activeWidget}
+          deleteWidgetDetails={this.deleteWidgetDetails}
+           />}
       </div>
     )
   }
